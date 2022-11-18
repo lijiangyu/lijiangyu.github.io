@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>威联通存储下载阿里云盘的资源（Webdav） | 小四日志</title>
+<link rel="shortcut icon" href="https://lijiangyu.github.io/favicon.ico?v=1668748797168">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://lijiangyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="威联通存储下载阿里云盘的资源（Webdav） | 小四日志 - Atom Feed" href="https://lijiangyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQRF6PDWEN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EQRF6PDWEN');
+</script>
+
+
+    <meta name="description" content="1、获取阿里云盘的TOKEN
+首先要先有个阿里云盘账户；
+然后通过浏览器登录阿里云盘；（我用的谷歌浏览器）
+然后按F12，然后按下图1234得到需要的TOKEN备用。
+
+2、在Container Station中创建App
+先到Contai..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://lijiangyu.github.io">
+  <img class="avatar" src="https://lijiangyu.github.io/images/avatar.png?v=1668748797168" alt="">
+  </a>
+  <h1 class="site-title">
+    小四日志
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              威联通存储下载阿里云盘的资源（Webdav）
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-08-01
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="1-获取阿里云盘的token"><strong>1、获取阿里云盘的TOKEN</strong></h1>
+<p>首先要先有个阿里云盘账户；<br>
+然后通过浏览器登录阿里云盘；（我用的谷歌浏览器）<br>
+然后按F12，然后按下图1234得到需要的TOKEN备用。<br>
+<img src="https://lijiangyu.github.io/post-images/1659343991790.png" alt="" loading="lazy"></p>
+<h1 id="2-在container-station中创建app"><strong>2、在Container Station中创建App</strong></h1>
+<p>先到Container Station中点击“创建”页签，然后点击右侧“创建应用程序”按钮，如下图：<br>
+<img src="https://lijiangyu.github.io/post-images/1659343127415.png" alt="" loading="lazy"><br>
+具体步骤如下：<br>
+<img src="https://lijiangyu.github.io/post-images/1659343234061.png" alt="" loading="lazy"></p>
+<p>YAML代码如下：</p>
+<pre><code>version: '3.3'
+services:
+  aliyundrive-webdav:
+    container_name: aliyundrive-webdav
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+    environment:
+      - 'REFRESH_TOKEN=这里换上自己的TOKEN，上面已经介绍了怎么获得TOKEN'
+    image: messense/aliyundrive-webdav
+</code></pre>
+<p>代码出处：</p>
+<pre><code>https://github.com/messense/aliyundrive-webdav
+</code></pre>
+<p>回到总览页就可以看到建好的APP了。<br>
+<img src="https://lijiangyu.github.io/post-images/1659344156914.png" alt="" loading="lazy"></p>
+<h1 id="3-通过hybridmount挂载"><strong>3、通过HybridMount挂载</strong></h1>
+<p>威联通安装HybridMount应用程序；<br>
+打开HybridMount应用程序，然后看图；<br>
+<img src="https://lijiangyu.github.io/post-images/1659344379008.png" alt="" loading="lazy"><br>
+<img src="https://lijiangyu.github.io/post-images/1659344419422.png" alt="" loading="lazy"><br>
+<img src="https://lijiangyu.github.io/post-images/1659344676488.png" alt="" loading="lazy"><br>
+好了，打开FileStation看看；<br>
+<img src="https://lijiangyu.github.io/post-images/1659344797263.png" alt="" loading="lazy"><br>
+已经可以看到挂载的阿里云盘内容了，剩下该干嘛就可以干嘛了。<br>
+传输速度真不错。<br>
+<img src="https://lijiangyu.github.io/post-images/1659345160416.png" alt="" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#1-%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E7%9A%84token"><strong>1、获取阿里云盘的TOKEN</strong></a></li>
+<li><a href="#2-%E5%9C%A8container-station%E4%B8%AD%E5%88%9B%E5%BB%BAapp"><strong>2、在Container Station中创建App</strong></a></li>
+<li><a href="#3-%E9%80%9A%E8%BF%87hybridmount%E6%8C%82%E8%BD%BD"><strong>3、通过HybridMount挂载</strong></a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://lijiangyu.github.io/post/tong-guo-telnet-qu-de-yi-dong-guang-mao-hs8546v5-chao-ji-mi-ma/">
+              <h3 class="post-title">
+                通过telnet取得移动光猫HS8546V5超级密码
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: '',
+  apikey: 'Ys24v8FYDEoM2sSGLceEwQncRop5IOnV5nIg10JytSKFpWntABOD9TemPDQfOh8J',
+}
+if ('') {
+  options.api = ''
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://lijiangyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>威联通Docker安装TMM并解决中文乱码问题 | 小四日志</title>
+<link rel="shortcut icon" href="https://lijiangyu.github.io/favicon.ico?v=1668748797168">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://lijiangyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="威联通Docker安装TMM并解决中文乱码问题 | 小四日志 - Atom Feed" href="https://lijiangyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQRF6PDWEN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EQRF6PDWEN');
+</script>
+
+
+    <meta name="description" content="1、Docker安装TMM
+Docker使用romancin/tinymediamanager镜像；
+安装镜像，进入高级设置：
+环境变量修改或添加以下几项：
+GROUP_ID
+USER_ID=0
+TZ=Asia/Shanghai
+ENABL..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://lijiangyu.github.io">
+  <img class="avatar" src="https://lijiangyu.github.io/images/avatar.png?v=1668748797168" alt="">
+  </a>
+  <h1 class="site-title">
+    小四日志
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              威联通Docker安装TMM并解决中文乱码问题
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-11-11
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="1-docker安装tmm"><strong>1、Docker安装TMM</strong></h1>
+<p>Docker使用romancin/tinymediamanager镜像；<br>
+安装镜像，进入高级设置：<br>
+环境变量修改或添加以下几项：</p>
+<pre><code>GROUP_ID
+USER_ID=0
+TZ=Asia/Shanghai
+ENABLE_CJK_FONT=1
+</code></pre>
+<p><img src="https://lijiangyu.github.io/post-images/1668146290727.png" alt="" loading="lazy"><br>
+网络选NAT和Host都行；</p>
+<p>映射一下config和media文件夹；<br>
+<img src="https://lijiangyu.github.io/post-images/1668146369676.png" alt="" loading="lazy"><br>
+点击创建就完成了。</p>
+<h1 id="2-解决中文口口的问题"><strong>2、解决中文口口的问题</strong></h1>
+<p>新建TMM容器后，用浏览器登录会发现界面是英文，切换中文全是口口口口；<br>
+然后如图：<br>
+<img src="https://lijiangyu.github.io/post-images/1668146601030.png" alt="" loading="lazy"><br>
+粘贴以下代码到终端依次运行：</p>
+<pre><code>wget https://mirrors.aliyun.com/alpine/edge/testing/x86_64/font-wqy-zenhei-0.9.45-r2.apk
+apk add --allow-untrusted font-wqy-zenhei-0.9.45-r2.apk
+</code></pre>
+<p><img src="https://lijiangyu.github.io/post-images/1668146843869.png" alt="" loading="lazy"><br>
+等待添加完成后，关闭终端机，重启TMM<br>
+<img src="https://lijiangyu.github.io/post-images/1668148513181.png" alt="" loading="lazy"></p>
+<h1 id="3-参考网页"><strong>3、参考网页</strong></h1>
+<p>https://post.smzdm.com/p/aekwr7r3/<br>
+https://post.smzdm.com/p/ar0nq5dg/<br>
+https://www.bilibili.com/read/cv18956570/<br>
+http://www.gebi1.com/forum.php?mod=viewthread&amp;tid=295644&amp;ordertype=1<br>
+https://zhuanlan.zhihu.com/p/150590415?from_voters_page=true</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#1-docker%E5%AE%89%E8%A3%85tmm"><strong>1、Docker安装TMM</strong></a></li>
+<li><a href="#2-%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E5%8F%A3%E5%8F%A3%E7%9A%84%E9%97%AE%E9%A2%98"><strong>2、解决中文口口的问题</strong></a></li>
+<li><a href="#3-%E5%8F%82%E8%80%83%E7%BD%91%E9%A1%B5"><strong>3、参考网页</strong></a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://lijiangyu.github.io/post/jin-tian-wo-de-ax9000-gao-ding-adguardhome-liao/">
+              <h3 class="post-title">
+                今天我的AX9000搞定ADGuardHome了
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: '',
+  apikey: 'Ys24v8FYDEoM2sSGLceEwQncRop5IOnV5nIg10JytSKFpWntABOD9TemPDQfOh8J',
+}
+if ('') {
+  options.api = ''
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://lijiangyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

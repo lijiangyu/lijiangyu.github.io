@@ -1,0 +1,249 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>小米AX9000路由器开SSH，装MIXBOX和ShellClash | 小四日志</title>
+<link rel="shortcut icon" href="https://lijiangyu.github.io/favicon.ico?v=1668748797168">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://lijiangyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="小米AX9000路由器开SSH，装MIXBOX和ShellClash | 小四日志 - Atom Feed" href="https://lijiangyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQRF6PDWEN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EQRF6PDWEN');
+</script>
+
+
+    <meta name="description" content="
+第一步：解锁AX9000路由器的SSH
+第二步：安装MIXBOX
+第三步：安装ShellClash
+
+
+趁着618期间小米促销，949元入了个小米的AX9000折腾一下。😁
+以前一直用R2S装openwrt系统做路由，但是主要也就用到D..." />
+    <meta name="keywords" content="AX9000,MIXBOX,ShellClash" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://lijiangyu.github.io">
+  <img class="avatar" src="https://lijiangyu.github.io/images/avatar.png?v=1668748797168" alt="">
+  </a>
+  <h1 class="site-title">
+    小四日志
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              小米AX9000路由器开SSH，装MIXBOX和ShellClash
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-06-07
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://lijiangyu.github.io/tag/T1pO2AXEu/" class="post-tag">
+                  # AX9000
+                </a>
+              
+                <a href="https://lijiangyu.github.io/tag/uEw6p88WWw/" class="post-tag">
+                  # MIXBOX
+                </a>
+              
+                <a href="https://lijiangyu.github.io/tag/mHrL1Za4mL/" class="post-tag">
+                  # ShellClash
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://lijiangyu.github.io/post-images/xiao-mi-ax9000-lu-you-qi-kai-sshzhuang-mixbox-he-shellclash.jpeg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><ul class="markdownIt-TOC">
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E8%A7%A3%E9%94%81ax9000%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84ssh"><strong>第一步：解锁AX9000路由器的SSH</strong></a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%AE%89%E8%A3%85mixbox"><strong>第二步：安装MIXBOX</strong></a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%AE%89%E8%A3%85shellclash"><strong>第三步：安装ShellClash</strong></a></li>
+</ul>
+<br>
+趁着618期间小米促销，949元入了个小米的AX9000折腾一下。😁</p>
+<p>以前一直用R2S装openwrt系统做路由，但是主要也就用到DDNS、端口映射和openclash几个功能，觉得没必要非要单弄个设备，即占网线和电源的地方，又发热不稳定，不如都搞到路由器里。</p>
+<p>之前用华硕RTAC86U刷梅林，但是CPU性能太弱，而且Wifi5也过时了，所以趁降价入手小米AX9000。</p>
+<h1 id="第一步解锁ax9000路由器的ssh"><strong>第一步：解锁AX9000路由器的SSH</strong></h1>
+<p>参考B站或油管的视频，没有openwrt的无线路由，就用笔记本和VirtualBox搭个虚拟环境充当。参考下面这一个视频就够了。<br>
+<a href="https://www.bilibili.com/video/BV1q94y1f7fj?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1q94y1f7fj?spm_id_from=333.337.search-card.all.click</a></p>
+<h1 id="第二步安装mixbox"><strong>第二步：安装MIXBOX</strong></h1>
+<p>MIXBOX应该是目前小米路由器上最全的命令行工具之一了。<br>
+<a href="https://github.com/monlor/MIXBOX-ARCHIVE">https://github.com/monlor/MIXBOX-ARCHIVE</a><br>
+直接在命令行下执行安装代码。</p>
+<pre><code>export MB_URL=https://g.monlor.com/https://raw.githubusercontent.com/monlor/mbfiles/master &amp;&amp; sh -c &quot;$(curl -kfsSl ${MB_URL}/install.sh)&quot; &amp;&amp; source /etc/profile &amp;&gt; /dev/null
+</code></pre>
+<p>安装后执行mixbox可以运行。我安装mixbox主要是为了aliddns插件做动态域名解析。<br>
+另外防火墙插件也比较好用。</p>
+<h1 id="第三步安装shellclash"><strong>第三步：安装ShellClash</strong></h1>
+<p>到github网站找到ShellClash安装脚本执行即可。<br>
+<a href="https://github.com/juewuy/ShellClash">https://github.com/juewuy/ShellClash</a><br>
+我使用的这个安装源装上的：</p>
+<pre><code>export url='https://fastly.jsdelivr.net/gh/juewuy/ShellClash@master' &amp;&amp; sh -c &quot;$(curl -kfsSl $url/install.sh)&quot; &amp;&amp; source /etc/profile &amp;&gt; /dev/null
+</code></pre>
+<p>装好后执行clash命令跟着提示即可运行。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E8%A7%A3%E9%94%81ax9000%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84ssh"><strong>第一步：解锁AX9000路由器的SSH</strong></a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%AE%89%E8%A3%85mixbox"><strong>第二步：安装MIXBOX</strong></a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%AE%89%E8%A3%85shellclash"><strong>第三步：安装ShellClash</strong></a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://lijiangyu.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: '',
+  apikey: 'Ys24v8FYDEoM2sSGLceEwQncRop5IOnV5nIg10JytSKFpWntABOD9TemPDQfOh8J',
+}
+if ('') {
+  options.api = ''
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://lijiangyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

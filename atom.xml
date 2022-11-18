@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://lijiangyu.github.io</id>
+    <title>小四日志</title>
+    <updated>2022-11-18T05:19:59.015Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://lijiangyu.github.io"/>
+    <link rel="self" href="https://lijiangyu.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://lijiangyu.github.io/images/avatar.png</logo>
+    <icon>https://lijiangyu.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, 小四日志</rights>
+    <entry>
+        <title type="html"><![CDATA[最近家里的OC2总是更新无流量]]></title>
+        <id>https://lijiangyu.github.io/post/zui-jin-jia-li-de-oc2-zong-shi-geng-xin-wu-liu-liang/</id>
+        <link href="https://lijiangyu.github.io/post/zui-jin-jia-li-de-oc2-zong-shi-geng-xin-wu-liu-liang/">
+        </link>
+        <updated>2022-11-15T02:25:55.000Z</updated>
+        <content type="html"><![CDATA[<p>收藏个方法回家试试。<br>
+1.路由器翻<br>
+2.手机下载OC2 APP 注册登录<br>
+3.OC2连Wifi（网络受限不用管），然后把眼镜中间的感应器用胶布贴好，插上电源<br>
+4.在手机OC2 APP里和OC2匹配好<br>
+5.等个10-20分钟，网络就不受限了，正常更新了</p>
+<p>梯子稳定更新也就20分钟多一点</p>
+<p>改全局模式试试。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Jellyfin的opendouban插件]]></title>
+        <id>https://lijiangyu.github.io/post/jellyfin-de-opendouban-cha-jian/</id>
+        <link href="https://lijiangyu.github.io/post/jellyfin-de-opendouban-cha-jian/">
+        </link>
+        <updated>2022-11-14T09:25:18.000Z</updated>
+        <content type="html"><![CDATA[<p>https://github.com/caryyu/jellyfin-plugin-opendouban<br>
+下载2.0.4 dll</p>
+<p>https://github.com/caryyu/douban-openapi-server<br>
+搭建API docker<br>
+caryyu/douban-openapi-server<br>
+docker container run -d -p 5005:5000 caryyu/douban-openapi-server:latest --restart=always</p>
+<figure data-type="image" tabindex="1"><img src="https://lijiangyu.github.io/post-images/1668748567480.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[威联通Docker安装TMM并解决中文乱码问题]]></title>
+        <id>https://lijiangyu.github.io/post/wei-lian-tong-docker-an-zhuang-tmm-bing-jie-jue-zhong-wen-luan-ma-wen-ti/</id>
+        <link href="https://lijiangyu.github.io/post/wei-lian-tong-docker-an-zhuang-tmm-bing-jie-jue-zhong-wen-luan-ma-wen-ti/">
+        </link>
+        <updated>2022-11-11T05:45:17.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1-docker安装tmm"><strong>1、Docker安装TMM</strong></h1>
+<p>Docker使用romancin/tinymediamanager镜像；<br>
+安装镜像，进入高级设置：<br>
+环境变量修改或添加以下几项：</p>
+<pre><code>GROUP_ID
+USER_ID=0
+TZ=Asia/Shanghai
+ENABLE_CJK_FONT=1
+</code></pre>
+<p><img src="https://lijiangyu.github.io/post-images/1668146290727.png" alt="" loading="lazy"><br>
+网络选NAT和Host都行；</p>
+<p>映射一下config和media文件夹；<br>
+<img src="https://lijiangyu.github.io/post-images/1668146369676.png" alt="" loading="lazy"><br>
+点击创建就完成了。</p>
+<h1 id="2-解决中文口口的问题"><strong>2、解决中文口口的问题</strong></h1>
+<p>新建TMM容器后，用浏览器登录会发现界面是英文，切换中文全是口口口口；<br>
+然后如图：<br>
+<img src="https://lijiangyu.github.io/post-images/1668146601030.png" alt="" loading="lazy"><br>
+粘贴以下代码到终端依次运行：</p>
+<pre><code>wget https://mirrors.aliyun.com/alpine/edge/testing/x86_64/font-wqy-zenhei-0.9.45-r2.apk
+apk add --allow-untrusted font-wqy-zenhei-0.9.45-r2.apk
+</code></pre>
+<p><img src="https://lijiangyu.github.io/post-images/1668146843869.png" alt="" loading="lazy"><br>
+等待添加完成后，关闭终端机，重启TMM<br>
+<img src="https://lijiangyu.github.io/post-images/1668148513181.png" alt="" loading="lazy"></p>
+<h1 id="3-参考网页"><strong>3、参考网页</strong></h1>
+<p>https://post.smzdm.com/p/aekwr7r3/<br>
+https://post.smzdm.com/p/ar0nq5dg/<br>
+https://www.bilibili.com/read/cv18956570/<br>
+http://www.gebi1.com/forum.php?mod=viewthread&amp;tid=295644&amp;ordertype=1<br>
+https://zhuanlan.zhihu.com/p/150590415?from_voters_page=true</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[今天我的AX9000搞定ADGuardHome了]]></title>
+        <id>https://lijiangyu.github.io/post/jin-tian-wo-de-ax9000-gao-ding-adguardhome-liao/</id>
+        <link href="https://lijiangyu.github.io/post/jin-tian-wo-de-ax9000-gao-ding-adguardhome-liao/">
+        </link>
+        <updated>2022-11-02T05:17:46.000Z</updated>
+        <content type="html"><![CDATA[<p>主要参考这个文章。<br>
+https://www.right.com.cn/forum/thread-8257706-1-1.html</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[威联通存储下载阿里云盘的资源（Webdav）]]></title>
+        <id>https://lijiangyu.github.io/post/wei-lian-tong-cun-chu-xia-zai-a-li-yun-pan-de-zi-yuan/</id>
+        <link href="https://lijiangyu.github.io/post/wei-lian-tong-cun-chu-xia-zai-a-li-yun-pan-de-zi-yuan/">
+        </link>
+        <updated>2022-08-01T08:36:20.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1-获取阿里云盘的token"><strong>1、获取阿里云盘的TOKEN</strong></h1>
+<p>首先要先有个阿里云盘账户；<br>
+然后通过浏览器登录阿里云盘；（我用的谷歌浏览器）<br>
+然后按F12，然后按下图1234得到需要的TOKEN备用。<br>
+<img src="https://lijiangyu.github.io/post-images/1659343991790.png" alt="" loading="lazy"></p>
+<h1 id="2-在container-station中创建app"><strong>2、在Container Station中创建App</strong></h1>
+<p>先到Container Station中点击“创建”页签，然后点击右侧“创建应用程序”按钮，如下图：<br>
+<img src="https://lijiangyu.github.io/post-images/1659343127415.png" alt="" loading="lazy"><br>
+具体步骤如下：<br>
+<img src="https://lijiangyu.github.io/post-images/1659343234061.png" alt="" loading="lazy"></p>
+<p>YAML代码如下：</p>
+<pre><code>version: '3.3'
+services:
+  aliyundrive-webdav:
+    container_name: aliyundrive-webdav
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+    environment:
+      - 'REFRESH_TOKEN=这里换上自己的TOKEN，上面已经介绍了怎么获得TOKEN'
+    image: messense/aliyundrive-webdav
+</code></pre>
+<p>代码出处：</p>
+<pre><code>https://github.com/messense/aliyundrive-webdav
+</code></pre>
+<p>回到总览页就可以看到建好的APP了。<br>
+<img src="https://lijiangyu.github.io/post-images/1659344156914.png" alt="" loading="lazy"></p>
+<h1 id="3-通过hybridmount挂载"><strong>3、通过HybridMount挂载</strong></h1>
+<p>威联通安装HybridMount应用程序；<br>
+打开HybridMount应用程序，然后看图；<br>
+<img src="https://lijiangyu.github.io/post-images/1659344379008.png" alt="" loading="lazy"><br>
+<img src="https://lijiangyu.github.io/post-images/1659344419422.png" alt="" loading="lazy"><br>
+<img src="https://lijiangyu.github.io/post-images/1659344676488.png" alt="" loading="lazy"><br>
+好了，打开FileStation看看；<br>
+<img src="https://lijiangyu.github.io/post-images/1659344797263.png" alt="" loading="lazy"><br>
+已经可以看到挂载的阿里云盘内容了，剩下该干嘛就可以干嘛了。<br>
+传输速度真不错。<br>
+<img src="https://lijiangyu.github.io/post-images/1659345160416.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[通过telnet取得移动光猫HS8546V5超级密码]]></title>
+        <id>https://lijiangyu.github.io/post/tong-guo-telnet-qu-de-yi-dong-guang-mao-hs8546v5-chao-ji-mi-ma/</id>
+        <link href="https://lijiangyu.github.io/post/tong-guo-telnet-qu-de-yi-dong-guang-mao-hs8546v5-chao-ji-mi-ma/">
+        </link>
+        <updated>2022-06-20T09:27:34.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="需要的工具"><strong>需要的工具</strong></h1>
+<p>ONT维修使能工具<br>
+华为配置加解密工具<br>
+任意一种telnet客户端 XSHELL<br>
+一截普通网线（用于直接连接光猫）<br>
+一个FTP服务器（可选） TFTP服务器</p>
+<h1 id="1-telnet使能"><strong>1 telnet使能</strong></h1>
+<p>首先，用网线连接电脑和光猫，保证电脑分配到一个可访问光猫的IP地址。打开ONT维修使能工具（ONT V5.exe），选择“V5使能”。在“网卡配置”一栏选择连接光猫的网卡（如果你有多张网卡的话请注意甄别）。点击右下角的“启动”，等待左下角“当前成功总数”变为1，同时你可以看到光猫指示灯全亮，点击“停止”，并关闭ONT维修使能工具，接下来将不再需要它。</p>
+<h1 id="2-telnet接入光猫"><strong>2 telnet接入光猫</strong></h1>
+<p>打开Xshell，新建空白标签页。输入以下telnet命令:</p>
+<pre><code>telnet 192.168.1.1 # 根据你的具体情况，这个IP地址可能不同
+</code></pre>
+<p>随后需要输入账户和密码，这个账户通常是 root ，在我这里密码为 adminHW，当然你可能会需要尝试以下其他密码：</p>
+<p>Hw8@CMCC<br>
+Hw8@cMcc<br>
+useradmin<br>
+admin<br>
+hg2x0<br>
+如果这里的密码都不能成功登录，你可能需要自己在网上搜索更新的密码。</p>
+<h1 id="3-启动shell"><strong>3 启动Shell</strong></h1>
+<p>在成功连接的telnel中，输入下面多条命令将启动shell并到达配置文件的存储目录:</p>
+<pre><code>su
+</code></pre>
+<p>你应该看到“success!”字样在屏幕出现，左侧的提示符页变为</p>
+<pre><code>SU_WAP&gt;
+</code></pre>
+<p>随后输入：</p>
+<pre><code>shell
+</code></pre>
+<p>你将看到如下的BusyBox启动的相关提示：</p>
+<pre><code>BusyBox v1.30.1 () built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+profile close core dump
+</code></pre>
+<p>同时左侧的提示符页变为：</p>
+<pre><code>WAP(Dopra Linux) # 
+</code></pre>
+<p>这时候cd到需要的目录中：</p>
+<pre><code>cd /mnt/jffs2
+</code></pre>
+<p>你可以通过 ls 命令来查看该目录下的一些文件，保存有超级密码的配置文件名为 hw_ctree.xml ，这是一份加密的配置文件。</p>
+<h1 id="4-解密配置文件"><strong>4 解密配置文件</strong></h1>
+<p>为了保证安全，首先需要将配置文件复制一份。提示：如果你遇到如下找不到命令情况：</p>
+<pre><code>/bin/sh: aescrypt2: not found
+/bin/sh: cp: not found
+</code></pre>
+<p>可以通过退出shell，重新启动shell的方式来解决。在成功之前，你可能需要多次尝试。</p>
+<pre><code>exit
+shell
+cd /mnt/jffs2
+</code></pre>
+<p>现在，复制配置文件：</p>
+<pre><code>cp hw_ctree.xml myconf.xml.gz # 待会会解密出一个压缩格式文件,所以直接在这里命名为.gz
+</code></pre>
+<p>然后使用aescrypt2解密这个后缀为.gz的xml文件:</p>
+<pre><code>aescrypt2 1 myconf.xml.gz tmp
+# aescrypt2 &lt;mode&gt; &lt;input file&gt; &lt;outputfilename&gt;
+# 值得注意的是，aescrypt2似乎会无视 &lt;outputfilename&gt; 参数，输出在原来的文件名上，这个实例中就是myconf.xml.gz
+</code></pre>
+<p>接下来解压这个文件：</p>
+<pre><code>gzip -d myconf.xml.gz
+</code></pre>
+<p>将得到一个名为 <strong>myconf.xml</strong> 的文件，接下来cat出加密的Password字符串：</p>
+<pre><code>cat myconf.xml|grep CMCCAdmin
+</code></pre>
+<p>在输出中找到类似下方内容的字符串，他们通常位于输出的第一行，应该很容易找到：</p>
+<pre><code>UserName=&quot;CMCCAdmin&quot; Password=&quot;$2@uIc/AkarL8Iwo)FLER@lHy_Y&amp;ltXdfs%orQ9g4yw4$&quot;
+</code></pre>
+<p>双引号内的字符串就是加密后的密码，复制他们。打开华为配置加解密工具(huawei.exe), 粘贴刚刚复制的字符串到“密文解密”一栏，点击“$2解密”,即可得到超级密码。注意：在某些地区，你可能需要在解密出的这个字符串前面加上 CMCCAdmin# 或 CMCCAdmin 才能组成正确的超级密码。如果解密出的字符串为 1234#1234 ，那么除了这个字符串本身就是超级密码以外，还有以下两种可能：</p>
+<pre><code>CMCCAdmin#1234#1234
+CMCCAdmin1234#1234
+</code></pre>
+<h1 id="5-写在后面"><strong>5 写在后面</strong></h1>
+<p>如果你有一个支持匿名的FTP服务器，你也可以将解密后的myconf.xml传输到电脑上进一步研究:</p>
+<pre><code>tftp -p -l myconf.xml -r myconf.xml &lt;FTP服务器地址&gt;  
+</code></pre>
+<p>如果你的光猫在<strong>公共场所提供互联网服务</strong>，在不采取其他措施的情况下，为了你的网络安全，请一定记得通过你刚刚取得超级密码登陆光猫，<strong>在 “安全”——“广域网访问设置”——“ONT访问控制配置” 中关闭通过Telnet访问设备</strong>。</p>
+<h1 id="6-参考"><strong>6 参考</strong></h1>
+<p>华为光猫HS8546V5获取超级密码\改华为界面<br>
+https://www.right.com.cn/FORUM/thread-4070210-1-1.html<br>
+华为 HG8245C 光猫 修改无线用户数限制+hw_ctree.xml 文件解密<br>
+https://www.cnblogs.com/myzerg/p/3622134.html</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用Gridea和Github创建现在的这个Blog并开通Https与域名访问]]></title>
+        <id>https://lijiangyu.github.io/post/shi-yong-gridea-he-github-chuang-jian-xian-zai-de-zhe-ge-blog-bing-kai-tong-https-yu-yu-ming-fang-wen/</id>
+        <link href="https://lijiangyu.github.io/post/shi-yong-gridea-he-github-chuang-jian-xian-zai-de-zhe-ge-blog-bing-kai-tong-https-yu-yu-ming-fang-wen/">
+        </link>
+        <updated>2022-06-10T01:18:20.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://lijiangyu.github.io/post-images/1654823973500.png" alt="" loading="lazy"></figure>
+<p>😁</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[用到的MIXBOX插件]]></title>
+        <id>https://lijiangyu.github.io/post/yong-dao-de-mixbox-cha-jian/</id>
+        <link href="https://lijiangyu.github.io/post/yong-dao-de-mixbox-cha-jian/">
+        </link>
+        <updated>2022-06-09T05:49:51.000Z</updated>
+        <content type="html"><![CDATA[<p>今天记录几个在AX9000上装的几个MIXBOX插件。😍</p>
+<h1 id="1-aliddns-阿里云动态域名解析">1、aliddns 阿里云动态域名解析</h1>
+<h1 id="2-koolproxy-koolshare早期的广告屏蔽插件">2、KoolProxy  KoolShare早期的广告屏蔽插件</h1>
+<h1 id="3-miwifi-小米路由器管理插件">3、miwifi 小米路由器管理插件</h1>
+<h1 id="4-webshell-通过浏览器访问小米路由器的ssh命令行">4、webshell 通过浏览器访问小米路由器的SSH命令行</h1>
+<h1 id="5-firewall-控制小米路由器端口">5、firewall 控制小米路由器端口</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[小米AX9000路由器开SSH，装MIXBOX和ShellClash]]></title>
+        <id>https://lijiangyu.github.io/post/xiao-mi-ax9000-lu-you-qi-kai-sshzhuang-mixbox-he-shellclash/</id>
+        <link href="https://lijiangyu.github.io/post/xiao-mi-ax9000-lu-you-qi-kai-sshzhuang-mixbox-he-shellclash/">
+        </link>
+        <updated>2022-06-07T05:42:19.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E8%A7%A3%E9%94%81ax9000%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84ssh"><strong>第一步：解锁AX9000路由器的SSH</strong></a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%AE%89%E8%A3%85mixbox"><strong>第二步：安装MIXBOX</strong></a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%AE%89%E8%A3%85shellclash"><strong>第三步：安装ShellClash</strong></a></li>
+</ul>
+<br>
+趁着618期间小米促销，949元入了个小米的AX9000折腾一下。😁</p>
+<p>以前一直用R2S装openwrt系统做路由，但是主要也就用到DDNS、端口映射和openclash几个功能，觉得没必要非要单弄个设备，即占网线和电源的地方，又发热不稳定，不如都搞到路由器里。</p>
+<p>之前用华硕RTAC86U刷梅林，但是CPU性能太弱，而且Wifi5也过时了，所以趁降价入手小米AX9000。</p>
+<h1 id="第一步解锁ax9000路由器的ssh"><strong>第一步：解锁AX9000路由器的SSH</strong></h1>
+<p>参考B站或油管的视频，没有openwrt的无线路由，就用笔记本和VirtualBox搭个虚拟环境充当。参考下面这一个视频就够了。<br>
+<a href="https://www.bilibili.com/video/BV1q94y1f7fj?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1q94y1f7fj?spm_id_from=333.337.search-card.all.click</a></p>
+<h1 id="第二步安装mixbox"><strong>第二步：安装MIXBOX</strong></h1>
+<p>MIXBOX应该是目前小米路由器上最全的命令行工具之一了。<br>
+<a href="https://github.com/monlor/MIXBOX-ARCHIVE">https://github.com/monlor/MIXBOX-ARCHIVE</a><br>
+直接在命令行下执行安装代码。</p>
+<pre><code>export MB_URL=https://g.monlor.com/https://raw.githubusercontent.com/monlor/mbfiles/master &amp;&amp; sh -c &quot;$(curl -kfsSl ${MB_URL}/install.sh)&quot; &amp;&amp; source /etc/profile &amp;&gt; /dev/null
+</code></pre>
+<p>安装后执行mixbox可以运行。我安装mixbox主要是为了aliddns插件做动态域名解析。<br>
+另外防火墙插件也比较好用。</p>
+<h1 id="第三步安装shellclash"><strong>第三步：安装ShellClash</strong></h1>
+<p>到github网站找到ShellClash安装脚本执行即可。<br>
+<a href="https://github.com/juewuy/ShellClash">https://github.com/juewuy/ShellClash</a><br>
+我使用的这个安装源装上的：</p>
+<pre><code>export url='https://fastly.jsdelivr.net/gh/juewuy/ShellClash@master' &amp;&amp; sh -c &quot;$(curl -kfsSl $url/install.sh)&quot; &amp;&amp; source /etc/profile &amp;&gt; /dev/null
+</code></pre>
+<p>装好后执行clash命令跟着提示即可运行。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://lijiangyu.github.io/post/hello-gridea/</id>
+        <link href="https://lijiangyu.github.io/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="https://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>
